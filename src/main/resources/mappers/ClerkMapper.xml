@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ljz.meetingserver.model.dao.ClerkMapper">
+  <resultMap id="BaseResultMap" type="com.ljz.meetingserver.model.pojo.Clerk">
+    <id column="clerk_id" jdbcType="INTEGER" property="clerkId" />
+    <result column="department_id" jdbcType="INTEGER" property="departmentId" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    clerk_id, department_id, `name`
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from ljz_meeting_clerk
+    where clerk_id = #{clerkId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from ljz_meeting_clerk
+    where clerk_id = #{clerkId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.ljz.meetingserver.model.pojo.Clerk">
+    insert into ljz_meeting_clerk (clerk_id, department_id, `name`
+      )
+    values (#{clerkId,jdbcType=INTEGER}, #{departmentId,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ljz.meetingserver.model.pojo.Clerk">
+    insert into ljz_meeting_clerk
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="clerkId != null">
+        clerk_id,
+      </if>
+      <if test="departmentId != null">
+        department_id,
+      </if>
+      <if test="name != null">
+        `name`,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="clerkId != null">
+        #{clerkId,jdbcType=INTEGER},
+      </if>
+      <if test="departmentId != null">
+        #{departmentId,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ljz.meetingserver.model.pojo.Clerk">
+    update ljz_meeting_clerk
+    <set>
+      <if test="departmentId != null">
+        department_id = #{departmentId,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        `name` = #{name,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where clerk_id = #{clerkId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ljz.meetingserver.model.pojo.Clerk">
+    update ljz_meeting_clerk
+    set department_id = #{departmentId,jdbcType=INTEGER},
+      `name` = #{name,jdbcType=VARCHAR}
+    where clerk_id = #{clerkId,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.ljz.meetingserver.model.pojo.Clerk">
+    <id column="clerk_id" jdbcType="INTEGER" property="clerkId" />
+    <result column="department_id" jdbcType="INTEGER" property="departmentId" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    clerk_id, department_id, `name`
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from ljz_meeting_clerk
+    where clerk_id = #{clerkId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from ljz_meeting_clerk
+    where clerk_id = #{clerkId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.ljz.meetingserver.model.pojo.Clerk">
+    insert into ljz_meeting_clerk (clerk_id, department_id, `name`
+      )
+    values (#{clerkId,jdbcType=INTEGER}, #{departmentId,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ljz.meetingserver.model.pojo.Clerk">
+    insert into ljz_meeting_clerk
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="clerkId != null">
+        clerk_id,
+      </if>
+      <if test="departmentId != null">
+        department_id,
+      </if>
+      <if test="name != null">
+        `name`,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="clerkId != null">
+        #{clerkId,jdbcType=INTEGER},
+      </if>
+      <if test="departmentId != null">
+        #{departmentId,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ljz.meetingserver.model.pojo.Clerk">
+    update ljz_meeting_clerk
+    <set>
+      <if test="departmentId != null">
+        department_id = #{departmentId,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        `name` = #{name,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where clerk_id = #{clerkId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ljz.meetingserver.model.pojo.Clerk">
+    update ljz_meeting_clerk
+    set department_id = #{departmentId,jdbcType=INTEGER},
+      `name` = #{name,jdbcType=VARCHAR}
+    where clerk_id = #{clerkId,jdbcType=INTEGER}
+  </update>
+</mapper>

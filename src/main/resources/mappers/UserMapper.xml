@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ljz.meetingserver.model.dao.UserMapper">
+  <resultMap id="BaseResultMap" type="com.ljz.meetingserver.model.pojo.User">
+    <id column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="clerk_id" jdbcType="INTEGER" property="clerkId" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="power" jdbcType="CHAR" property="power" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    user_id, clerk_id, username, `password`, `power`
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from ljz_meeting_user
+    where user_id = #{userId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from ljz_meeting_user
+    where user_id = #{userId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.ljz.meetingserver.model.pojo.User">
+    insert into ljz_meeting_user (user_id, clerk_id, username, 
+      `password`, `power`)
+    values (#{userId,jdbcType=INTEGER}, #{clerkId,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, 
+      #{password,jdbcType=VARCHAR}, #{power,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ljz.meetingserver.model.pojo.User">
+    insert into ljz_meeting_user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="clerkId != null">
+        clerk_id,
+      </if>
+      <if test="username != null">
+        username,
+      </if>
+      <if test="password != null">
+        `password`,
+      </if>
+      <if test="power != null">
+        `power`,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="clerkId != null">
+        #{clerkId,jdbcType=INTEGER},
+      </if>
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="power != null">
+        #{power,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ljz.meetingserver.model.pojo.User">
+    update ljz_meeting_user
+    <set>
+      <if test="clerkId != null">
+        clerk_id = #{clerkId,jdbcType=INTEGER},
+      </if>
+      <if test="username != null">
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        `password` = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="power != null">
+        `power` = #{power,jdbcType=CHAR},
+      </if>
+    </set>
+    where user_id = #{userId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ljz.meetingserver.model.pojo.User">
+    update ljz_meeting_user
+    set clerk_id = #{clerkId,jdbcType=INTEGER},
+      username = #{username,jdbcType=VARCHAR},
+      `password` = #{password,jdbcType=VARCHAR},
+      `power` = #{power,jdbcType=CHAR}
+    where user_id = #{userId,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.ljz.meetingserver.model.pojo.User">
+    <id column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="clerk_id" jdbcType="INTEGER" property="clerkId" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="power" jdbcType="CHAR" property="power" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    user_id, clerk_id, username, `password`, `power`
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from ljz_meeting_user
+    where user_id = #{userId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from ljz_meeting_user
+    where user_id = #{userId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.ljz.meetingserver.model.pojo.User">
+    insert into ljz_meeting_user (user_id, clerk_id, username, 
+      `password`, `power`)
+    values (#{userId,jdbcType=INTEGER}, #{clerkId,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, 
+      #{password,jdbcType=VARCHAR}, #{power,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ljz.meetingserver.model.pojo.User">
+    insert into ljz_meeting_user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="clerkId != null">
+        clerk_id,
+      </if>
+      <if test="username != null">
+        username,
+      </if>
+      <if test="password != null">
+        `password`,
+      </if>
+      <if test="power != null">
+        `power`,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="clerkId != null">
+        #{clerkId,jdbcType=INTEGER},
+      </if>
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="power != null">
+        #{power,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ljz.meetingserver.model.pojo.User">
+    update ljz_meeting_user
+    <set>
+      <if test="clerkId != null">
+        clerk_id = #{clerkId,jdbcType=INTEGER},
+      </if>
+      <if test="username != null">
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        `password` = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="power != null">
+        `power` = #{power,jdbcType=CHAR},
+      </if>
+    </set>
+    where user_id = #{userId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ljz.meetingserver.model.pojo.User">
+    update ljz_meeting_user
+    set clerk_id = #{clerkId,jdbcType=INTEGER},
+      username = #{username,jdbcType=VARCHAR},
+      `password` = #{password,jdbcType=VARCHAR},
+      `power` = #{power,jdbcType=CHAR}
+    where user_id = #{userId,jdbcType=INTEGER}
+  </update>
+</mapper>

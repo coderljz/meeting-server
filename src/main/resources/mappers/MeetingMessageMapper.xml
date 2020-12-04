@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ljz.meetingserver.model.dao.MeetingMessageMapper">
+  <resultMap id="BaseResultMap" type="com.ljz.meetingserver.model.pojo.MeetingMessage">
+    <id column="meeting_message_id" jdbcType="INTEGER" property="meetingMessageId" />
+    <result column="room_id" jdbcType="INTEGER" property="roomId" />
+    <result column="host_clerk_id" jdbcType="INTEGER" property="hostClerkId" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="content" jdbcType="VARCHAR" property="content" />
+    <result column="date" jdbcType="DATE" property="date" />
+    <result column="time_slot" jdbcType="CHAR" property="timeSlot" />
+    <result column="record" jdbcType="VARCHAR" property="record" />
+    <result column="check_state" jdbcType="CHAR" property="checkState" />
+    <result column="time_state" jdbcType="CHAR" property="timeState" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    meeting_message_id, room_id, host_clerk_id, title, content, `date`, time_slot, record, 
+    check_state, time_state
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from ljz_meeting_meeting_message
+    where meeting_message_id = #{meetingMessageId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from ljz_meeting_meeting_message
+    where meeting_message_id = #{meetingMessageId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.ljz.meetingserver.model.pojo.MeetingMessage">
+    insert into ljz_meeting_meeting_message (meeting_message_id, room_id, host_clerk_id, 
+      title, content, `date`, 
+      time_slot, record, check_state, 
+      time_state)
+    values (#{meetingMessageId,jdbcType=INTEGER}, #{roomId,jdbcType=INTEGER}, #{hostClerkId,jdbcType=INTEGER}, 
+      #{title,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR}, #{date,jdbcType=DATE}, 
+      #{timeSlot,jdbcType=CHAR}, #{record,jdbcType=VARCHAR}, #{checkState,jdbcType=CHAR}, 
+      #{timeState,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ljz.meetingserver.model.pojo.MeetingMessage">
+    insert into ljz_meeting_meeting_message
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="meetingMessageId != null">
+        meeting_message_id,
+      </if>
+      <if test="roomId != null">
+        room_id,
+      </if>
+      <if test="hostClerkId != null">
+        host_clerk_id,
+      </if>
+      <if test="title != null">
+        title,
+      </if>
+      <if test="content != null">
+        content,
+      </if>
+      <if test="date != null">
+        `date`,
+      </if>
+      <if test="timeSlot != null">
+        time_slot,
+      </if>
+      <if test="record != null">
+        record,
+      </if>
+      <if test="checkState != null">
+        check_state,
+      </if>
+      <if test="timeState != null">
+        time_state,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="meetingMessageId != null">
+        #{meetingMessageId,jdbcType=INTEGER},
+      </if>
+      <if test="roomId != null">
+        #{roomId,jdbcType=INTEGER},
+      </if>
+      <if test="hostClerkId != null">
+        #{hostClerkId,jdbcType=INTEGER},
+      </if>
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="date != null">
+        #{date,jdbcType=DATE},
+      </if>
+      <if test="timeSlot != null">
+        #{timeSlot,jdbcType=CHAR},
+      </if>
+      <if test="record != null">
+        #{record,jdbcType=VARCHAR},
+      </if>
+      <if test="checkState != null">
+        #{checkState,jdbcType=CHAR},
+      </if>
+      <if test="timeState != null">
+        #{timeState,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ljz.meetingserver.model.pojo.MeetingMessage">
+    update ljz_meeting_meeting_message
+    <set>
+      <if test="roomId != null">
+        room_id = #{roomId,jdbcType=INTEGER},
+      </if>
+      <if test="hostClerkId != null">
+        host_clerk_id = #{hostClerkId,jdbcType=INTEGER},
+      </if>
+      <if test="title != null">
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="date != null">
+        `date` = #{date,jdbcType=DATE},
+      </if>
+      <if test="timeSlot != null">
+        time_slot = #{timeSlot,jdbcType=CHAR},
+      </if>
+      <if test="record != null">
+        record = #{record,jdbcType=VARCHAR},
+      </if>
+      <if test="checkState != null">
+        check_state = #{checkState,jdbcType=CHAR},
+      </if>
+      <if test="timeState != null">
+        time_state = #{timeState,jdbcType=CHAR},
+      </if>
+    </set>
+    where meeting_message_id = #{meetingMessageId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ljz.meetingserver.model.pojo.MeetingMessage">
+    update ljz_meeting_meeting_message
+    set room_id = #{roomId,jdbcType=INTEGER},
+      host_clerk_id = #{hostClerkId,jdbcType=INTEGER},
+      title = #{title,jdbcType=VARCHAR},
+      content = #{content,jdbcType=VARCHAR},
+      `date` = #{date,jdbcType=DATE},
+      time_slot = #{timeSlot,jdbcType=CHAR},
+      record = #{record,jdbcType=VARCHAR},
+      check_state = #{checkState,jdbcType=CHAR},
+      time_state = #{timeState,jdbcType=CHAR}
+    where meeting_message_id = #{meetingMessageId,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.ljz.meetingserver.model.pojo.MeetingMessage">
+    <id column="meeting_message_id" jdbcType="INTEGER" property="meetingMessageId" />
+    <result column="room_id" jdbcType="INTEGER" property="roomId" />
+    <result column="host_clerk_id" jdbcType="INTEGER" property="hostClerkId" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="content" jdbcType="VARCHAR" property="content" />
+    <result column="date" jdbcType="DATE" property="date" />
+    <result column="time_slot" jdbcType="CHAR" property="timeSlot" />
+    <result column="record" jdbcType="VARCHAR" property="record" />
+    <result column="check_state" jdbcType="CHAR" property="checkState" />
+    <result column="time_state" jdbcType="CHAR" property="timeState" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    meeting_message_id, room_id, host_clerk_id, title, content, `date`, time_slot, record, 
+    check_state, time_state
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from ljz_meeting_meeting_message
+    where meeting_message_id = #{meetingMessageId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from ljz_meeting_meeting_message
+    where meeting_message_id = #{meetingMessageId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.ljz.meetingserver.model.pojo.MeetingMessage">
+    insert into ljz_meeting_meeting_message (meeting_message_id, room_id, host_clerk_id, 
+      title, content, `date`, 
+      time_slot, record, check_state, 
+      time_state)
+    values (#{meetingMessageId,jdbcType=INTEGER}, #{roomId,jdbcType=INTEGER}, #{hostClerkId,jdbcType=INTEGER}, 
+      #{title,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR}, #{date,jdbcType=DATE}, 
+      #{timeSlot,jdbcType=CHAR}, #{record,jdbcType=VARCHAR}, #{checkState,jdbcType=CHAR}, 
+      #{timeState,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ljz.meetingserver.model.pojo.MeetingMessage">
+    insert into ljz_meeting_meeting_message
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="meetingMessageId != null">
+        meeting_message_id,
+      </if>
+      <if test="roomId != null">
+        room_id,
+      </if>
+      <if test="hostClerkId != null">
+        host_clerk_id,
+      </if>
+      <if test="title != null">
+        title,
+      </if>
+      <if test="content != null">
+        content,
+      </if>
+      <if test="date != null">
+        `date`,
+      </if>
+      <if test="timeSlot != null">
+        time_slot,
+      </if>
+      <if test="record != null">
+        record,
+      </if>
+      <if test="checkState != null">
+        check_state,
+      </if>
+      <if test="timeState != null">
+        time_state,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="meetingMessageId != null">
+        #{meetingMessageId,jdbcType=INTEGER},
+      </if>
+      <if test="roomId != null">
+        #{roomId,jdbcType=INTEGER},
+      </if>
+      <if test="hostClerkId != null">
+        #{hostClerkId,jdbcType=INTEGER},
+      </if>
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="date != null">
+        #{date,jdbcType=DATE},
+      </if>
+      <if test="timeSlot != null">
+        #{timeSlot,jdbcType=CHAR},
+      </if>
+      <if test="record != null">
+        #{record,jdbcType=VARCHAR},
+      </if>
+      <if test="checkState != null">
+        #{checkState,jdbcType=CHAR},
+      </if>
+      <if test="timeState != null">
+        #{timeState,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ljz.meetingserver.model.pojo.MeetingMessage">
+    update ljz_meeting_meeting_message
+    <set>
+      <if test="roomId != null">
+        room_id = #{roomId,jdbcType=INTEGER},
+      </if>
+      <if test="hostClerkId != null">
+        host_clerk_id = #{hostClerkId,jdbcType=INTEGER},
+      </if>
+      <if test="title != null">
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="date != null">
+        `date` = #{date,jdbcType=DATE},
+      </if>
+      <if test="timeSlot != null">
+        time_slot = #{timeSlot,jdbcType=CHAR},
+      </if>
+      <if test="record != null">
+        record = #{record,jdbcType=VARCHAR},
+      </if>
+      <if test="checkState != null">
+        check_state = #{checkState,jdbcType=CHAR},
+      </if>
+      <if test="timeState != null">
+        time_state = #{timeState,jdbcType=CHAR},
+      </if>
+    </set>
+    where meeting_message_id = #{meetingMessageId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ljz.meetingserver.model.pojo.MeetingMessage">
+    update ljz_meeting_meeting_message
+    set room_id = #{roomId,jdbcType=INTEGER},
+      host_clerk_id = #{hostClerkId,jdbcType=INTEGER},
+      title = #{title,jdbcType=VARCHAR},
+      content = #{content,jdbcType=VARCHAR},
+      `date` = #{date,jdbcType=DATE},
+      time_slot = #{timeSlot,jdbcType=CHAR},
+      record = #{record,jdbcType=VARCHAR},
+      check_state = #{checkState,jdbcType=CHAR},
+      time_state = #{timeState,jdbcType=CHAR}
+    where meeting_message_id = #{meetingMessageId,jdbcType=INTEGER}
+  </update>
+</mapper>
